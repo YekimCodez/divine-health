@@ -51,30 +51,24 @@ const menuContainer = document.getElementById('menu');
 // Function to to display the selected day's menu
 function showMenu(day) {
     // Get the menu items for the selected day
-    const menuItems = weeklyMenu[day];
-}
+    const menuItems = weeklyMenu[day.toLowerCase()];
 
-// Clear the previous menu
-menuContainer.innerHTML = ''; 
+    // Clear the previous menu
+    menuContainer.innerHTML = ''; 
 
-// Loop through menuItems and display each one
-menuItems.forEach(item => {
+    // Loop through menuItems and display each one
+    menuItems.forEach(item => {
     // Create a div for each menu item
-    const menuItemDiv = document.createElement('div');
-    menuItems.classList.add('menu-item');
-});  
+      const menuItemDiv = document.createElement('div');
+      menuItemDiv.classList.add('menu-item');
 
-// Get the menu items for the day
-const menuItems = weeklyMenu.monday;
+       // Add menu item name and price
+      menuItemDiv.innerHTML = `<p>${item.name} <p>${item.price}`;
 
-// Add the item name and price
-menuItems.innerHTML = `
-    <p>${item.name}</p>
-    <p>${item.price}</p>
-`;
-
-// Append the menu item to the menu container
-menuContainer.appendChild(menuItems);
+      // Append the menu item to the menu container
+      menuContainer.appendChild(menuItemDiv);
+    });     
+} 
 
 // Show Saturday's menu by default on page load
 window.onload = function() {
